@@ -1,23 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState }from 'react';
+import axios from 'axios';
 
 function App() {
+  const [data, setData] = useState(null);
+  
+  async function handleClick() {
+    await axios.post("/api/workouts/", {
+      "workout_type": "run",
+      "duration": "2:14:46",
+      "distance": 47,
+      "notes": "axios test"
+    })
+    const response = await axios.get("/api/workouts");
+    
+    console.log(response.data);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <div>{data}</div>
+      <button onClick={handleClick}>Click</button>
     </div>
   );
 }
