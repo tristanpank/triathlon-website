@@ -1,7 +1,11 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register(r'workoutEntries', views.WorkoutEntryView, 'workoutEntries')
 
 
 urlpatterns = [
-    path('', views.WorkoutEntryView.as_view())
+    path('', include(router.urls))
 ]
