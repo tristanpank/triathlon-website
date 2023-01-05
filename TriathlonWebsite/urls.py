@@ -17,9 +17,11 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 from api import views as api_views
+from userAuth import views as auth_views
 
 router = routers.DefaultRouter()
 router.register(r'workouts', api_views.WorkoutEntryView, 'workouts')
+router.register(r'register', auth_views.RegisterView, 'register')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
