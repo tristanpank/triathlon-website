@@ -22,8 +22,10 @@ from userAuth import views as auth_views
 router = routers.DefaultRouter()
 router.register(r'workouts', api_views.WorkoutEntryView, 'workouts')
 router.register(r'register', auth_views.RegisterView, 'register')
+# router.register(r'login', auth_views.LoginView, 'login')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls))
+    path('api/', include(router.urls)),
+    path('api/login/', auth_views.LoginView.as_view(), name='login')
 ]
