@@ -18,7 +18,7 @@ function App() {
     //   "distance": 47,
     //   "notes": "axios test"
     // })
-    const response = await axios.get("/api/workouts");
+    const response = await axios.get("/api/workouts/");
     
     console.log(response.data);
 
@@ -27,7 +27,11 @@ function App() {
 
     const loginTest = await axios.post("api/login/", {"username": "testuser2", "password": "testing321"});
 
-    console.log(loginTest);
+    // console.log(loginTest);
+    // await axios.get("api/logout/")
+    // const loginTest2 = await axios.post("api/login/", {"username": "testuser", "password": "testing321"})
+    const user = await axios.get("api/user/");
+    console.log(user);
   }
 
   return (
